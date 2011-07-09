@@ -22,10 +22,5 @@ define mysql_user (
 		'add_user':
 			command => "mysql -uroot -p$rootpass -h $host -e \"create user $name@$host identified by '$pass'\"",
 			unless => "mysql -u$name -p$pass -h $host";
-
-		'set_password':
-			command => "mysqladmin -u$name -p$pass -h $host password $newpass",
-			provider => shell,
-			onlyif => "if $newpass != \"\"; then exit 0; else exit 1; fi";
 	}
 }
