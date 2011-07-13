@@ -20,7 +20,7 @@ define mysql_user (
 ){
 	exec {
 		'add_user':
-			command => "mysql -uroot -p$rootpass -h $host -e \"create user $name@$host identified by '$pass'\"",
+			command => "mysql -uroot -p$mysql_rootpass -h $host -e \"create user $name@$host identified by '$pass'\"",
 			unless => "mysql -u$name -p$pass -h $host";
 	}
 }
