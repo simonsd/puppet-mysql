@@ -8,5 +8,5 @@ class mysql {
 	include mysql::service
 	include mysql::config
 
-	Class['mysql::packages'] -> Class['mysql::config'] -> Class['mysql::service']
+	Class['mysql::packages'] -> Class['mysql::service'] -> Class['mysql::config']
 }
