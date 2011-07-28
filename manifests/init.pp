@@ -3,7 +3,9 @@ import 'service.pp'
 import 'config.pp'
 import 'define.pp'
 
-class mysql {
+class mysql (
+	$rootpass
+) {
 	include mysql::packages
 	include mysql::service
 	include mysql::config

@@ -1,6 +1,6 @@
 define mysql_db (
 	$name,
-	$pass = "$mysql_rootpass",
+	$pass = "$mysql::rootpass",
 	$user = 'root',
 	$host = 'localhost'
 ){
@@ -21,7 +21,7 @@ define mysql_user (
 ){
 	exec {
 		'add_user':
-			command => "mysql -uroot -p\"$mysql_rootpass\" -h \"$host\" -e \"create user '$name'@'$host' identified by '$pass'\"",
+			command => "mysql -uroot -p$mysql::rootpass -h \"$host\" -e \"create user '$name'@'$host' identified by '$pass'\"",
 			path => '/usr/bin:/bin:/sbin',
 			unless => "mysql -u$name -p$pass -h $host";
 	}
