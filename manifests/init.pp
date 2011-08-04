@@ -6,9 +6,5 @@ import 'define.pp'
 class mysql (
 	$rootpass
 ) {
-	include mysql::packages
-	include mysql::service
-	include mysql::config
-
-	Class['mysql::packages'] -> Class['mysql::service'] -> Class['mysql::config']
+	class{'packages':} -> class{'service':} -> class{'config':}
 }
