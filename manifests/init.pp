@@ -1,7 +1,5 @@
-import 'packages.pp'
-import 'service.pp'
-import 'config.pp'
-import 'define.pp'
+import 'classes/*'
+import 'definitions/*'
 
 class mysql (
 	$rootpass
