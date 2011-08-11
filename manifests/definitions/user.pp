@@ -1,5 +1,4 @@
 define mysql_user (
-	$name,
 	$pass = 'StdPas5',
 	$newpass = "",
 	$host = 'localhost'

@@ -1,5 +1,4 @@
 define mysql_db (
-	$name,
 	$pass = "$mysql::rootpass",
 	$user = 'root',
 	$host = 'localhost',
