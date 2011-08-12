@@ -5,12 +5,12 @@ define mysql_db (
 	$perms = 'all privileges'
 ){
 	exec {
-		'add_db':
+		"create_db_$name":
 			command => "mysqladmin -uroot -p$mysql::rootpass -h \"$host\" create \"$name\"",
 			path => '/usr/bin:/bin:/sbin',
 			unless => "mysql -uroot -p$mysql::rootpass -h \"$host\" -e 'use $name'";
 
-		'set perms':
+		"set_perms_$name":
 			command => "mysql -uroot -p$mysql::rootpass -h $host -e \"grant $perms on $name.* to '$user'@'$host' identified by '$pass'\"",
 			path => '/usr/bin:/bin:/sbin',
 #			unless => "mysql -uroot -p$mysql::rootpass -h $host -e \"
