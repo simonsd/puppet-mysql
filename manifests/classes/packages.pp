@@ -3,6 +3,7 @@ class mysql::packages {
 		'mysql-server':
 			ensure => installed,
 			name => $operatingsystem ? {
+				archlinux => 'mysql',
 				'Centos' => "mysql-server.$hardwaremodel",
 				'Debian' => 'mysql-server',
 			};
@@ -10,6 +11,7 @@ class mysql::packages {
 		'mysql-client':
 			ensure => installed,
 			name => $operatingsystem ? {
+				archlinux => 'mysql-clients',
 				Centos => "mysql.$hardwaremodel",
 				Debian => "mysql-client",
 			},
@@ -18,6 +20,7 @@ class mysql::packages {
 		'mysql-dev':
 			ensure => installed,
 			name => $operatingsystem ? {
+				archlinux => undef,
 				Debian => "libmysqlclient15-dev",
 				Centos => "mysql-devel.$hardwaremodel",
 			},
