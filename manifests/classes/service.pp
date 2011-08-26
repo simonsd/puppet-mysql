@@ -7,6 +7,6 @@ class mysql::service {
 			Debian => 'mysql',
 			archlinux => 'mysqld',
 		},
-		require => Package['mysql-server'],
+		require => Package['mysql-server'];
 	}
 }
