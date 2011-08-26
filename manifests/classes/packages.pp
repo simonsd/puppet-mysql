@@ -1,5 +1,5 @@
 class mysql::packages {
-	package {
+	@package {
 		'mysql-server':
 			ensure => installed,
 			name => $operatingsystem ? {
@@ -20,10 +20,13 @@ class mysql::packages {
 		'mysql-dev':
 			ensure => installed,
 			name => $operatingsystem ? {
-				archlinux => undef,
 				Debian => "libmysqlclient15-dev",
 				Centos => "mysql-devel.$hardwaremodel",
 			},
 			require => Package['mysql-server'];
 	}
+
+	realize(Package['mysql-server', 'mysql-client'])
+	if $::operatingsystem != 'archlinux' {
+		realize(Package['mysql-dev'])
 }
