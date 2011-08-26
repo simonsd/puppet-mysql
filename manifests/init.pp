@@ -6,7 +6,13 @@ class mysql (
 	$stages = 'no'
 ) {
 	if $stages == 'no' {
-		class{'packages':} -> class{'service':} -> class{'config':}
+		class{
+			'mysql::packages':
+				before => Class['mysql::service'];
+			'mysql::service':
+				before => Class['mysql::config'];
+			'mysql::config':;
+		}
 	} else {
 		class{
 			'packages':
