@@ -5,6 +5,7 @@ class mysql::service {
 		name => $operatingsystem ? {
 			Centos => 'mysqld',
 			Debian => 'mysql',
+			archlinux => 'mysqld',
 		},
 		require => Package['mysql-server'],
 	}
