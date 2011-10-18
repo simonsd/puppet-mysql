@@ -13,6 +13,6 @@ define mysql_db (
 		"set_perms_$name":
 			command => "mysql -uroot -p$mysql::rootpass -h $host -e \"grant $perms on $name.* to '$user'@'$host' identified by '$pass'\"",
 			path => '/usr/bin:/bin:/sbin',
-#			unless => "mysql -uroot -p$mysql::rootpass -h $host -e \"
+#			unless => "mysql -uroot -p$mysql::rootpass -h $host -e \"select * from information_schema.user_privileges\"|grep $mysql::dbname";
 	}
 }
