@@ -2,7 +2,7 @@ import 'classes/*'
 import 'definitions/*'
 
 class mysql (
-	$rootpass
+	$rootpass,
 	$stages = 'no'
 ) {
 	if $stages == 'no' {
